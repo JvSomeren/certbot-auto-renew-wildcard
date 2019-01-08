@@ -16,6 +16,7 @@ source $DIR/ENV.sh
 count=0
 while [ "x${DOMAINS[count]}" != "x" ]
 do
-  echo "/usr/bin/certbot certonly -n --manual --manual-public-ip-logging-ok --preferred-challenges=dns --email joost.v.someren@gmail.com --manual-auth-hook $DIR/authenticator.sh --manual-cleanup-hook $DIR/cleanup.sh -d ${DOMAINS[count]}"
+  echo "Running certbot for:" $DOMAINS[count]
+  /usr/bin/certbot certonly -n --manual --manual-public-ip-logging-ok --preferred-challenges=dns --email joost.v.someren@gmail.com --manual-auth-hook $DIR/authenticator.sh --manual-cleanup-hook $DIR/cleanup.sh -d ${DOMAINS[count]}
   count=$(( $count + 1 ))
 done
